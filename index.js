@@ -12,6 +12,10 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("/"));
     app.use(express.static("src"));
 
+    app.get("/sw.js", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "sw.js"));
+    });
+
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, "index.html"));
     })
