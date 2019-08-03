@@ -3,32 +3,29 @@
  */
 
 function postReview(review) {
-fetch(URL, {
-  method: 'POST',
-  headers: {
-    'Content-type': 'application/json',
-    'Accept': 'application/json'
-  },
-  body: JSON.stringify({
-    author: review.author,
-    review
-  }),
-
-})
-.then(res => {
-  console.log('Review sent: ', res);
-  // maybe update the UI
-})
+  fetch(URL, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({author: review.author, review})
+  }).then(res => {
+    console.log('Review sent: ', res);
+    // maybe update the UI
+  })
 }
-
 
 if ('serviceWorker' in navigator) {
   // register sw
-  navigator.serviceWorker.register('/sw.js')
-  .then(registration => {
-    
-    // console.log('[Sw Registered in resto_info..]', navigator.serviceWorker.ready);
-  });
+  navigator
+    .serviceWorker
+    .register('../../sw.js')
+    .then(registration => {
+
+      // console.log('[Sw Registered in resto_info..]',
+      // navigator.serviceWorker.ready);
+    });
 }
 
 // handle review form
@@ -38,7 +35,7 @@ requiredMessage.setAttribute('style', 'visibility: hidden');
 
 const form = document.querySelector('#review-form');
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
   event.preventDefault();
 
   const name = document.querySelector('#reviewer');
@@ -51,44 +48,49 @@ form.addEventListener('submit', function(event) {
     name: name.value,
     rating: rating.value,
     comments: comments.value,
-    restaurant_id: getParameterByName('id'),
+    restaurant_id: getParameterByName('id')
   };
 
   function registerSync(sw, reviews) {
-    return sw.sync.register('sync-reviews')
-    .then(() => {
-      // clear the form data
-      requiredMessage.setAttribute('style', 'visibility: hidden');
-      name.value = '';
-      rating.value = '';
-      comments.value = '';
+    return sw
+      .sync
+      .register('sync-reviews')
+      .then(() => {
+        // clear the form data
+        requiredMessage.setAttribute('style', 'visibility: hidden');
+        name.value = '';
+        rating.value = '';
+        comments.value = '';
 
-      // render restaurant reviews
-      fillReviewsHTML(reviews)
-    })
-    .catch(err => console.log('[INDEXEDDB] saving posts failed!', err))
+        // render restaurant reviews
+        fillReviewsHTML(reviews)
+      })
+      .catch(err => console.log('[INDEXEDDB] saving posts failed!', err))
   }
 
   if ('SyncManager' in window) {
     // console.log('[SW Ready...]', navigator.serviceWorker);
     // https://github.com/w3c/ServiceWorker/issues/1278
     // https://github.com/w3c/ServiceWorker/issues/1198
-    // https://stackoverflow.com/questions/40161452/service-worker-controllerchange-never-fires
+    // https://stackoverflow.com/questions/40161452/service-worker-controllerchange-n
+    // ever-fires
 
-    navigator.serviceWorker.ready
-    .then(sw => {
+    navigator
+      .serviceWorker
+      .ready
+      .then(sw => {
 
-      if (!(name.value && rating.value && comments.value)) {
-        // console.log('[INVALID ENTRIES]');
-        showRequiredMessage = true;
-        requiredMessage.setAttribute('style', 'visibility: visible');
-        return;
-      }
-      DBHelper.saveToSyncStore('review', review, reviews => {
-        registerSync(sw, reviews);
+        if (!(name.value && rating.value && comments.value)) {
+          // console.log('[INVALID ENTRIES]');
+          showRequiredMessage = true;
+          requiredMessage.setAttribute('style', 'visibility: visible');
+          return;
+        }
+        DBHelper.saveToSyncStore('review', review, reviews => {
+          registerSync(sw, reviews);
+        })
+
       })
-       
-    })
   } else {
     //sendData(); // for older browsers
     console.log('old browser');
@@ -110,11 +112,13 @@ window.initMap = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: restaurant.latlng,
-        scrollwheel: false
-      });
+      self.map = new google
+        .maps
+        .Map(document.getElementById('map'), {
+          zoom: 16,
+          center: restaurant.latlng,
+          scrollwheel: false
+        });
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
@@ -260,7 +264,7 @@ createReviewHTML = (review) => {
 /**
  * Add restaurant name to the breadcrumb navigation menu
  */
-fillBreadcrumb = (restaurant=self.restaurant) => {
+fillBreadcrumb = (restaurant = self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
@@ -272,14 +276,14 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
  * Get a parameter by name from page URL.
  */
 getParameterByName = (name, url) => {
-  if (!url)
+  if (!url) 
     url = window.location.href;
   name = name.replace(/[\[\]]/g, '\\$&');
   const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
     results = regex.exec(url);
-  if (!results)
+  if (!results) 
     return null;
-  if (!results[2])
+  if (!results[2]) 
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
