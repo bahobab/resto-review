@@ -1,13 +1,18 @@
 // register SW
 
 if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('sw.js').catch(console.error)
+    navigator
+        .serviceWorker
+        .register('../../sw.js')
+        .catch(console.error)
 }
 
 // current favorite restaurantId
 let currentFavId;
 
-let restaurants, neighborhoods, cuisines
+let restaurants,
+    neighborhoods,
+    cuisines
 var map
 var markers = []
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -18,10 +23,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 fetchNeighborhoods = () => {
     DBHelper.fetchNeighborhoods((error, neighborhoods) => {
         if (error) {
-        console.error(error)
+            console.error(error)
         } else {
-        self.neighborhoods = neighborhoods;
-        fillNeighborhoodsHTML()
+            self.neighborhoods = neighborhoods;
+            fillNeighborhoodsHTML()
         }
     })
 }
@@ -40,10 +45,10 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
 fetchCuisines = () => {
     DBHelper.fetchCuisines((error, cuisines) => {
         if (error) {
-        console.error(error)
+            console.error(error)
         } else {
-        self.cuisines = cuisines;
-        fillCuisinesHTML()
+            self.cuisines = cuisines;
+            fillCuisinesHTML()
         }
     })
 }
@@ -64,11 +69,13 @@ window.initMap = () => {
         lat: 40.722216,
         lng: -73.987501
     };
-    self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: loc,
-        scrollwheel: !1
-    });
+    self.map = new google
+        .maps
+        .Map(document.getElementById('map'), {
+            zoom: 12,
+            center: loc,
+            scrollwheel: !1
+        });
     updateRestaurants()
 }
 
@@ -81,10 +88,10 @@ updateRestaurants = () => {
     const neighborhood = nSelect[nIndex].value;
     DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
         if (error) {
-        console.error(error)
+            console.error(error)
         } else {
-        resetRestaurants(restaurants);
-        fillRestaurantsHTML()
+            resetRestaurants(restaurants);
+            fillRestaurantsHTML()
         }
     });
 }
@@ -93,12 +100,14 @@ resetRestaurants = (restaurants) => {
     self.restaurants = [];
     const ul = document.getElementById('restaurants-list');
     ul.innerHTML = '';
-    self.markers.forEach(m => m.setMap(null));
+    self
+        .markers
+        .forEach(m => m.setMap(null));
     self.markers = [];
     self.restaurants = restaurants
 }
 
-fillRestaurantsHTML = (restaurants = self.restaurants) => { // callback 
+fillRestaurantsHTML = (restaurants = self.restaurants) => { // callback
     const ul = document.getElementById('restaurants-list');
     ul.role = 'list';
     restaurants.forEach(restaurant => {
@@ -114,46 +123,45 @@ handleFavorite = (restaurantList) => {
     restaurantList.addEventListener('click', (event) => {
 
         function registerSync(sw, restaurants) {
-            return sw.sync.register('sync-favorite')
-            .then(() => {
-                // fillRestaurantsHTML(restaurants);
-                // console.log('[SYNC REG FAVORITE] success');
-                return;
-            })
-            .catch((err) => console.log('[SYNC FAVORITE REG] failed', err));
+            return sw
+                .sync
+                .register('sync-favorite')
+                .then(() => {
+                    // fillRestaurantsHTML(restaurants); console.log('[SYNC REG FAVORITE] success');
+                    return;
+                })
+                .catch((err) => console.log('[SYNC FAVORITE REG] failed', err));
         }
 
         // handle setting of favorite restaurant
         if ('SyncManager' in window) {
             // console.log('[SW Ready in FAV...]', navigator.serviceWorker);
-            navigator.serviceWorker.ready
-            .then(sw => {
-                const favoriteCheckboxes = document.querySelectorAll(`#restaurants-list li input`);
-                let favLi = document.getElementById(`resto-${currentFavId}`);
-                
-                for (let checkbox of favoriteCheckboxes) { // forEach?
-                    if (checkbox.id === event.target.id && checkbox.id !== currentFavId) {
-                        favLi.classList.remove('is-favorite');
-                        restaurantId = Number(checkbox
-                                                .attributes
-                                                .restaurantid
-                                                .value
-                                            );
-                        favLi = document.getElementById(`resto-${restaurantId}`);
-                        favLi.classList.add('is-favorite');
-                        currentFavId = restaurantId; // global
-                        return DBHelper.saveToSyncStore(
-                            'favorite',
-                            {
+            navigator
+                .serviceWorker
+                .ready
+                .then(sw => {
+                    const favoriteCheckboxes = document.querySelectorAll(`#restaurants-list li input`);
+                    let favLi = document.getElementById(`resto-${currentFavId}`);
+
+                    for (let checkbox of favoriteCheckboxes) { // forEach?
+                        if (checkbox.id === event.target.id && checkbox.id !== currentFavId) {
+                            favLi
+                                .classList
+                                .remove('is-favorite');
+                            restaurantId = Number(checkbox.attributes.restaurantid.value);
+                            favLi = document.getElementById(`resto-${restaurantId}`);
+                            favLi
+                                .classList
+                                .add('is-favorite');
+                            currentFavId = restaurantId; // global
+                            return DBHelper.saveToSyncStore('favorite', {
                                 id: new Date().toISOString(),
                                 restaurant_id: restaurantId,
-                                favorite: checkbox.checked,
-                            },
-                            restaurants => registerSync(sw, restaurants)
-                        );
+                                favorite: checkbox.checked
+                            }, restaurants => registerSync(sw, restaurants));
+                        }
                     }
-                }
-            })
+                })
         } else {
             // old browser
             console.log('[SW NOT SUPPORTED...]');
@@ -162,7 +170,8 @@ handleFavorite = (restaurantList) => {
 }
 
 createRestaurantHTML = (restaurant) => {
-    // https://w3c.github.io/html-reference/input.radio.html setting radio button properties
+    // https://w3c.github.io/html-reference/input.radio.html setting radio button
+    // properties
     const li = document.createElement('li');
     li.role = "listitem";
     // li.role = "tab";
@@ -191,13 +200,15 @@ createRestaurantHTML = (restaurant) => {
     if (restaurant.is_favorite === 'true') {
         favCheckbox.checked = 'checked';
         favCheckbox.attributes.value = 'on';
-        li.classList.toggle('is-favorite');
+        li
+            .classList
+            .toggle('is-favorite');
         currentFavId = restaurant.id; // global
     } else {
         favCheckbox.checked = '';
         favCheckbox.attributes.value = 'off';
     }
-    
+
     favCheckbox.setAttribute('restaurantId', restaurant.id);
     favCheckbox.id = restaurant.id;
     favCheckbox.setAttribute('aria-label', 'favorite checkbox');
@@ -227,9 +238,14 @@ createRestaurantHTML = (restaurant) => {
 addMarkersToMap = (restaurants = self.restaurants) => {
     restaurants.forEach(restaurant => {
         const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-        google.maps.event.addListener(marker, 'click', () => {
-        window.location.href = marker.url
-        });
-        self.markers.push(marker)
+        google
+            .maps
+            .event
+            .addListener(marker, 'click', () => {
+                window.location.href = marker.url
+            });
+        self
+            .markers
+            .push(marker)
     })
 }
