@@ -6,7 +6,7 @@ const CACHE_MAX_ITEMS = 11;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScri
 // pts
-self.importScripts('./src/js/idb.min.js', './src/js/dbhelper.js');
+self.importScripts('js/idb.min.js', '/js/dbhelper.js');
 
 // set static cache / app shell
 const appAssets = [
