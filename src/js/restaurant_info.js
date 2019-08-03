@@ -20,12 +20,13 @@ if ('serviceWorker' in navigator) {
   // register sw
   navigator
     .serviceWorker
-    .register('../../sw.js')
+    .register('/sw.js')
     .then(registration => {
 
       // console.log('[Sw Registered in resto_info..]',
       // navigator.serviceWorker.ready);
-    });
+    })
+    .catch(console.error);
 }
 
 // handle review form
@@ -72,8 +73,8 @@ form.addEventListener('submit', function (event) {
     // console.log('[SW Ready...]', navigator.serviceWorker);
     // https://github.com/w3c/ServiceWorker/issues/1278
     // https://github.com/w3c/ServiceWorker/issues/1198
-    // https://stackoverflow.com/questions/40161452/service-worker-controllerchange-n
-    // ever-fires
+    // https://stackoverflow.com/questions/40161452/service-worker-controllerchange-
+    // n ever-fires
 
     navigator
       .serviceWorker
