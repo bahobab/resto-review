@@ -16,7 +16,7 @@ function postReview(review) {
   })
 }
 
-if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+if ('serviceWorker' in navigator) {
   // register sw
   navigator
     .serviceWorker

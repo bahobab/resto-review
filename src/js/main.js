@@ -1,6 +1,6 @@
 // register SW
 
-if (navigator.serviceWorker && process.env.NODE_ENV === 'production') {
+if (navigator.serviceWorker) {
     navigator
         .serviceWorker
         .register('../../sw.js')
