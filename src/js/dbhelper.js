@@ -118,7 +118,11 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    return {get_restaurants: `http://localhost:1337/restaurants/`, get_reviews: `http://localhost:1337/reviews/`, post_review: 'http://localhost:1337/reviews/', update_favorite: 'http://localhost:1337/restaurants/'};
+    // return {get_restaurants: `http://localhost:1337/restaurants/`, get_reviews:
+    // `http://localhost:1337/reviews/`, post_review:
+    // 'http://localhost:1337/reviews/', update_favorite:
+    // 'http://localhost:1337/restaurants/'};
+    return {get_restaurants: `${reviewURL}restaurants/`, get_reviews: `${reviewURL}reviews/`, post_review: `${reviewURL}`, update_favorite: `${reviewURL}`};
   }
 
   /**
