@@ -411,9 +411,9 @@ class DBHelper {
     // return (images); console.log(images); handle restaurant.photograph ===
     // undefined here
     if (restaurant.photograph) {
-      return `/src/img/dest/webp/${restaurant.photograph}-md_1x.webp`;
+      return `img/dest/webp/${restaurant.photograph}-md_1x.webp`;
     }
-    return `/src/img/dest/webp/not-a-restaurant.webp`;
+    return `img/dest/webp/not-a-restaurant.webp`;
   }
 
   /**

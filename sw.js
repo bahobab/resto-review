@@ -2,7 +2,7 @@
 const CACHE_VER = 'VER_41';
 const CACHE_STATIC = `RestoReviewsStatic_${CACHE_VER}`;
 const CACHE_DYNAMIC = `RestoReviewsDynamic_${CACHE_VER}`;
-const CACHE_MAX_ITEMS = 10;
+const CACHE_MAX_ITEMS = 11;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScri
 // pts
