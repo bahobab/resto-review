@@ -399,7 +399,7 @@ class DBHelper {
    */
 
   static urlForRestaurant(restaurant) {
-    return (`html/restaurant.html?id=${restaurant.id}`);
+    return (`restaurant.html?id=${restaurant.id}`);
   }
 
   /**
