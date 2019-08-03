@@ -1,12 +1,12 @@
 const express = require("express");
 const helmet = require("helmet");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const path = require('path');
 
 const app = express();
 
 app.use(helmet());
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("/"));
