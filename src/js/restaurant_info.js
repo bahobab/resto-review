@@ -20,7 +20,7 @@ if ('serviceWorker' in navigator) {
   // register sw
   navigator
     .serviceWorker
-    .register('sw.js')
+    .register('/client/sw.js')
     .then(registration => {
 
       // console.log('[Sw Registered in resto_info..]',
