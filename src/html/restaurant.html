@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta name=theme-color content="#317EFB"/>
+<meta name=viewport content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta name=Description content="Author: Konan Houphoue, Category: Progressive Web Application">
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com'>
+<link rel='preconnect' href='https://maps.googleapis.com'>
+<link rel='preconnect' href='https://maps.gstatic.com'>
+
+<link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/css-reset.css">
+<link rel='preload' as='style' rel='stylesheet' href='css/restaurant.css' type=text/css onload="this.rel='stylesheet'">
+
+<title>Restaurant Info</title>
+
+<script defer type='text/javascript' src='js/idb.min.js'></script>
+<script defer type='text/javascript' src='js/dbhelper.js'></script>
+<script defer type='text/javascript' src='js/restaurant_info.js'></script>
+<style>
+   
+    #review-form {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid black;
+        margin-bottom: 15px;
+    }
+
+    .review-input-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-input-group input {
+        border: 0;
+        border-bottom: .5px solid #8f8f8f;
+        height: 25px;
+        margin-bottom: 7px;
+    }
+
+    .submit {
+        margin: 5px 0;
+        height: 50px;
+    }
+
+    .submit button {
+        width: 150px;
+        height: 35px;
+        border: none;
+        margin-top: 7px;
+        background-color: rgb(255, 182, 86);
+    }
+
+    .submit button span {
+        color: #2c2c2c;
+        size: 18px;
+        font-weight: 600;
+    }
+
+    #required-message {
+        color:crimson;
+    }
+
+</style>
+</head>
+<body class='inside'>
+<header>
+<nav>
+<h1><a href='/'>Restaurant Reviews</a></h1>
+</nav>
+<ul aria-label='Breadcrumb' id='breadcrumb'>
+<li><a href='/'>Home</a></li>
+</ul>
+</header>
+<main role="main content" id='maincontent' tabindex='0'>
+<section aria-hidden='true' id='map-container'>
+<div role='application' aria-hidden='true' id='map'></div>
+</section>
+<section role="restaurant information" id=restaurant-container tabindex=2>
+<h1 role="restaurant name" id='restaurant-name' tabindex='0'></h1>
+<img id='restaurant-img' alt="restaurant name">
+<p role="restaurant cuisine type" id='restaurant-cuisine' tabindex='0'></p>
+<p role="restaurant address" id='restaurant-address' tabindex='0'></p>
+<table role="restaurant operation hours" id='restaurant-hours' tabindex='0'></table>
+</section>
+<section role="restaurant reviews section" id='reviews-container' tabindex='0'>
+<ul role="restaurant reviews list" id='reviews-list' tabindex='0'></ul>
+<div>
+    <h4>Add Your Own Review</h4>
+    <p aria-hidden='true' id="required-message">Please fill in required fields</p>
+    <form id="review-form" role="add review form">
+        <div class='review-input-group'>
+            <label class='review-label' for="reviewer" aria-label="reviwer" aria-labelledby="reviewer">Your Name</label>
+            <input aria-required="true" name="reviewer_name" id="reviewer" type="text" placeholder="Type reviewer name - Required">
+        </div>
+        <div class='review-input-group'>
+            <label class='review-label' for="rating" aria-label="rating" aria-labelledby="rating">Your Rating</label>
+            <input aria-required="true" name="rating" id="rating" type="number" placeholder="Enter rating (number) - Required">
+        </div>
+        <label class='review-label' for="comments" aria-label="comments" aria-labelledby="comments">Your Comments</label>
+        <div class='review-input-group'>
+            <textarea aria-required="true" name="comments" id="comments" cols="30" rows="10" placeholder="Enter comments here - Required"></textarea>
+        </div>
+        <div class="submit">
+            <button type="submit" aria-label="submit review" role="submit button"><span>Submit Review</span></button>
+        </div>
+    </form>
+</div>
+</section>
+</main>
+<footer id='footer'>
+Copyright (c) 2018 <a href='/''><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+</footer>
+<!-- <script defer type=text/javascript src=js/idb.min.js></script>
+<script defer async type=text/javascript src=js/dbhelper.min.js></script>
+<script defer async type=text/javascript src=js/restaurant_info.min.js></script> -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT8Z1QctL7-IVxail9kY48ptk027hHvOk&libraries=places&callback=initMap"></script>
+</body>
+</html>
