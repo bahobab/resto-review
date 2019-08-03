@@ -1,0 +1,74 @@
+/* #maincontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+@font-face {
+    font-family: 'Arvo';
+    font-display: auto;
+    src: local('Arvo'), url("//normalize-css.googlecode.com/svn/trunk/normalize.css");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* .restaurant-op {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* #maincontent {
+    display: flex;
+    flex-direction: column;
+} */
+
+.filter-options {
+    /* display: flex; */
+    /* flex-direction: column;    
+    justify-content: center;
+    align-items: center; */
+}
+
+#restaurant-img {
+    /* restaurant.html */
+    width: 100%;
+}
+
+/* #restaurants-list li */
+/* #restaurants-list li {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+} */
+
+@media screen and (min-width: 768px) {
+    
+    .filter-options {
+        /* display: flex; */
+        flex-direction: row;
+        height: 50px;        
+        justify-content: center;
+        align-items: center;
+    }
+
+    #restaurants-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #restaurants-list li {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    #maincontent {
+        width: 85%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- <meta charset="utf-8"> -->
+  <meta name="theme-color" content="#317EFB"/>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <meta name="Description" content="Author: Konan Houphoue, Category: Progressive Web Application">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://maps.googleapis.com">
+  <link rel="preconnect" href="https://maps.gstatic.com">
+  <link rel="preconnect" href="http://localhost:1337">
+
+  <!-- <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2" as="font" type="font/woff2" crossorigin> -->
+
+  <!-- <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" /> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet"> -->
+ 
+  <!-- <link async defer rel="stylesheet" href="css/styles.css"> -->
+  <!--<link async defer rel="stylesheet" href="css/my-styles.min.css"> -->
+  <!-- <link rel="stylesheet" href="css/css.min.css"> -->
+
+  <!-- <link defer rel="preload" as="style" href="css/styles.css" onload="this.rel='stylesheet'"> -->
+  <!-- <link rel="preload" as="style" href="/css/my-styles.css" onload="this.rel='stylesheet'"> -->
+  <link defer rel="preload" as="style" href="src/css/styles.css" onload="this.rel='stylesheet'">
+  <!-- favicons -->
+  <link rel="shortcut icon" href="src/images/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="src/images/icons/favicon.ico" type="image/x-icon">
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <title>Restaurant Reviews</title>
+
+  <!-- <script defer type="text/javascript" src="js/idb.js"></script> -->
+
+  <script defer type="text/javascript" src="src/js/idb.min.js"></script>
+  <script defer type="application/javascript" charset="utf-8" src="src/js/dbhelper.js"></script>
+  
+  <!-- <script type="application/javascript" charset="utf-8" src="js/main.min.js"></script> -->
+  <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv4ulLWv8d6-6yj1mbzJeqmvBKlbx0dE4&libraries=places&callback=initMap"></script> -->
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv4ulLWv8d6-6yj1mbzJeqmvBKlbx0dE4&libraries=places&callback=initMap"></script> -->
+</head>
+
+<body>
+  <header>
+    <nav role="navigation">
+      <h1><a href="/">Restaurant Reviews</a></h1>
+    </nav>
+  </header>
+
+  <main id="maincontent">
+    <section aria-hidden="true" id="map-container">
+      <div role="application" aria-hidden="true" id="map"></div>
+    </section>
+    <section class="restaurant-op">
+      <div class="filter-options">
+        <h2>Filter Results</h2>
+        <select aria-label="Select neighborhood" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+          <option value="all">All Neighborhoods</option>
+        </select>
+        <select aria-label="Select cuisine" id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+          <option value="all">All Cuisines</option>
+        </select>
+      </div>
+      <div id="fav-form">
+        <ul role="list" id="restaurants-list">Loading... Please wait.</ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- <script defer type="text/javascript" src="src/js/idb.min.js"></script> -->
+  <!-- <script defer type="application/javascript" charset="utf-8" src="src/js/dbhelper.js"></script> -->
+
+  <!-- <script async defer type="application/javascript" charset="utf-8" src="src/js/main.min.js"></script> -->
+  <script defer type="application/javascript" charset="utf-8" src="src/js/main.js"></script>
+  
+  <!-- AIzaSyAv4ulLWv8d6-6yj1mbzJeqmvBKlbx0dE4 -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv4ulLWv8d6-6yj1mbzJeqmvBKlbx0dE4&libraries=places&callback=initMap"></script> 
+
+  <footer aria-hidden="true" id="footer">
+    Copyright (c) 2018 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+
+</body>
+
+</html>
+ 

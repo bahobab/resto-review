@@ -1,0 +1,39 @@
+{
+  "name": "mws-restaurant-stage-1",
+  "version": "1.0.0",
+  "description": "--- #### _Three Stage Course Material Project - Restaurant Reviews_",
+  "main": "gruntfile.js",
+  "engines": {
+    "node": "12.3.1",
+    "npm": "6.9.2"
+  },
+  "scripts": {
+    "client" : "node index",
+    "dev": "nodemon index",
+    "start": "npm run client",
+    "heroku-postbuild": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udacity/mws-restaurant-stage-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/udacity/mws-restaurant-stage-1/issues"
+  },
+  "homepage": "https://github.com/udacity/mws-restaurant-stage-1#readme",
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-cwebp": "^2.1.1",
+    "grunt-responsive-images": "^1.10.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.20.0"
+  }
+}
