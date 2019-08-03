@@ -3,7 +3,7 @@
 if (navigator.serviceWorker) {
     navigator
         .serviceWorker
-        .register('/sw.js')
+        .register('sw.js')
         .catch(console.error)
 }
 
