@@ -5,12 +5,14 @@ const path = require('path');
 
 const app = express();
 
-app.use(helmet());
+// app.use(helmet());
 app.use(bodyParser.urlencoded({extended: true}));
 
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
     app.use(express.static("/"));
     app.use(express.static("src"));
+// }
+// if (process.env.NODE_ENV === "production") {
 
     app.get("/sw.js", (req, res) => {
         // https://stackoverflow.com/questions/49566059/service-worker-registration-erro
@@ -19,15 +21,17 @@ if (process.env.NODE_ENV === "production") {
     });
 
     app.get("/idb.min.js", (req, res) => {
-        // https://stackoverflow.com/questions/49566059/service-worker-registration-erro
-        // r-unsupported-mime-type-text-html
         res.sendFile(path.resolve(__dirname, "js/idb.min.js"));
     });
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, "index.html"));
     })
-}
+// }
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "index.html"));
+// })
 
 // if (process.env.NODE_ENV === "production") {   // Express will server up
 // production assets   // like our main.js, main.css files
@@ -38,4 +42,4 @@ if (process.env.NODE_ENV === "production") {
 // }
 
 const PORT = process.env.PORT || 8888;
-app.listen(PORT);
+app.listen(PORT, () => console.log('listening on port', PORT));

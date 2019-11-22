@@ -1,12 +1,12 @@
 // set sw version
-const CACHE_VER = 'VER_41';
+const CACHE_VER = 'VER_1';
 const CACHE_STATIC = `RestoReviewsStatic_${CACHE_VER}`;
 const CACHE_DYNAMIC = `RestoReviewsDynamic_${CACHE_VER}`;
-const CACHE_MAX_ITEMS = 11;
+const CACHE_MAX_ITEMS = 9;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScri
 // pts
-self.importScripts('js/idb.min.js', '/js/dbhelper.js');
+self.importScripts('/js/idb.min.js', '/js/dbhelper.js');
 
 // set static cache / app shell
 const appAssets = [
@@ -91,8 +91,8 @@ self.addEventListener('fetch', evt => {
     // solution courtesy of Maximillian Schwartzmuller strategy: network, then cache
     const getCustomResponsePromise = async() => {
         // const reviewURL = 'http://localhost:1337/reviews/?restaurant_id='; const
-        // reviewURL = 'http://localhost:1337/';
-        const reviewURL = 'https://resto-review-server.herokuapp.com/';
+        const reviewURL = 'http://localhost:1337/';
+        // const reviewURL = 'https://resto-review-server.herokuapp.com/';
 
         try {
             if (evt.request.url.indexOf(reviewURL) > -1) {
