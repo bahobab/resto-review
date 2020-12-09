@@ -1,5 +1,8 @@
 # Restaurant Review
 
+[visit project live](https://review-resto-live.herokuapp.com/)
+
+![Preview](./resto-review1.jpg)
 
 ## WHAT IT DOES
 
@@ -50,18 +53,17 @@ Accessibility score should be at 90 or better.
 
 The project is split in 2 parts:
 
-1/ Frontend
------------
-1 - clone or dowload the project to your local machine
-2 - from the project directory start the local server by running simpleServer:
-  $~ python3 -m http.server 8888
-(change the port number to suit your local environment)
-
-2/Backend API (not part of this project)
+1/ Backend API (not part of this project)
 ---------
-Stand up the backend server by following the instructions here:
-https://github.com/udacity/mws-restaurant-stage-3
+Stand up the backend server by following the instructions [here:](https://github.com/udacity/mws-restaurant-stage-3)
 
-4 - open http://localhost:8888
+2/ Frontend
+-----------
+- clone or download the project to your local machine
+- from the project directory start the local server by running simpleServer:
+  $~ python3 -m http.server 8888
+    (change the port number to suit your local environment)
+  (or in Visual Studio Code launch Live Server)
+- open http://localhost:[PORT in 2/2 - above]
 
 You should be able to check out restaurants, leave comments, even when offline
