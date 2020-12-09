@@ -1,8 +1,8 @@
-Restaurant Review
-=================
+# Restaurant Review
 
-WHAT IT DOES
-============
+
+## WHAT IT DOES
+
 The site allows users to check restaurants in selected New York City neighborhood.
 Users can rate the restaurant and write reviews.
 
@@ -13,8 +13,7 @@ BUILT WITH:
 - DOM
 - CSS
 
-Project requirements
-====================
+## Project requirements
 
 - PWA (Proressive Web App)
   . available offline
@@ -22,12 +21,12 @@ Project requirements
 - Accessibility
 - Responsive
 
-Project Overview
-================
+## Project Overview
+
 For the Restaurant Reviews projects, you will incrementally convert a static webpage to a mobile-ready web application. In Stage Three, you will take the connected application you built in Stage One and Stage Two and add additional functionality. You will add a form to allow users to create their own reviews. If the app is offline, your form will defer updating to the remote database until a connection is established. Finally, you’ll work to optimize your site to meet even stricter performance benchmarks than the previous project, and test again using Lighthouse.
 
-Specification
-=============
+## Specification
+
 You will be provided code for an updated Node development server and a README for getting the server up and running locally on your computer. The README will also contain the API you will need to make JSON requests to the server. Once you have the server up, you will begin the work of improving your Stage Two project code.
 
 This server is different than the server from stage 2, and has added capabilities. Make sure you are using the Stage Three server as you develop your project. Connecting to this server is the same as with Stage Two, however.
@@ -47,8 +46,7 @@ Progressive Web App score should be at 90 or better.
 Performance score should be at 90 or better.
 Accessibility score should be at 90 or better.
 
-HOW TO RUN THE PROJECT:
-=======================
+## HOW TO RUN THE PROJECT:
 
 The project is split in 2 parts:
 
@@ -59,9 +57,9 @@ The project is split in 2 parts:
   $~ python3 -m http.server 8888
 (change the port number to suit your local environment)
 
-2/Backend API (not built as part of this project)
+2/Backend API (not part of this project)
 ---------
-3 - Stand up the backend server by following the instructions here:
+Stand up the backend server by following the instructions here:
 https://github.com/udacity/mws-restaurant-stage-3
 
 4 - open http://localhost:8888
